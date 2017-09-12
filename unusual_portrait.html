@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Unusual Soft Skill Self Portrait</title>
+    </head>
+    <body>
+        <p style='text-align: center; margin-top: 200px; margin-left: -100px;' id='command'>Click to have bubbles</p>
+        <script type="text/javascript">
+            window.addEventListener('click', onClick);
+            function getRandomPosition(element) {
+                var x = document.body.offsetHeight-element.clientHeight;
+                var y = document.body.offsetWidth-element.clientWidth;
+                var randomX = Math.floor(Math.random()*x);
+                var randomY = Math.floor(Math.random()*y);
+                return [randomX,randomY];
+            }
+            function onClick() {
+                var video = document.createElement('video');
+                video.src = "unusual_portrait.mp4";
+                video.width = 240;
+                video.play();
+                var xy = getRandomPosition(video);
+                video.style.top = xy[0] + 'px';
+                video.style.left = xy[1] + 'px';
+                video.style.position = "absolute";
+                video.loop = true;
+                document.body.appendChild(video);
+                document.getElementById('command').innerHTML = 'Keep Clicking!!!';
+
+            }
+        </script>
+    </body>
+</html>
